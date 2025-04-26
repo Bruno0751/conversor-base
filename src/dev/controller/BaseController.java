@@ -1,7 +1,7 @@
-package controller;
+package dev.controller;
 
 import javax.swing.JOptionPane;
-import service.BaseService;
+import dev.service.BaseService;
 
 /**
  *
@@ -13,7 +13,6 @@ public class BaseController {
 
     public static void init() throws Exception {
         byte op;
-        String text = taxarText("4 - BINARIO -> DECIMAL");
         do {
             try {
                 op = Byte.parseByte(JOptionPane.showInputDialog(null, "------------CONVERSOR BASES------------\n"
@@ -21,7 +20,7 @@ public class BaseController {
                         + "1 - DECIMAL -> BINARIO\n"
                         + "2 - DECIMAL -> OCTAL\n"
                         + "3 - DECIMAL -> HEXADECIMAL\n"
-                        + text + "\n"
+                        + dev.util.Util.taxarText("4 - BINARIO - > DECIMAL")
                         + "---------------------------------------", "", JOptionPane.QUESTION_MESSAGE));
             } catch (NumberFormatException e) {
                 if (e.getMessage().contains("For input string")) {
@@ -37,7 +36,6 @@ public class BaseController {
                     JOptionPane.showMessageDialog(
                             null, "SISTEMA ENCERRADO", "", JOptionPane.INFORMATION_MESSAGE
                     );
-                    System.exit(0);
                     break;
                 default:
                     if (op >= 1 && op <= 3) {
@@ -85,7 +83,7 @@ public class BaseController {
                                 resultado = numero;
                                 response = BaseController.verifyResponse(resultado);
                                 JOptionPane.showMessageDialog(
-                                        null, "Binário = " + numero + " Decimal = " + response, "", JOptionPane.INFORMATION_MESSAGE
+                                        null, "Binário = " + numero + " Decimal = " + response, " | ", JOptionPane.INFORMATION_MESSAGE
                                 );
                             }
 
@@ -112,16 +110,6 @@ public class BaseController {
         String response = String.valueOf(resultado);
         response = response.contains(".") ? response.replace(".0", "") : response;
         return response;
-    }
-
-    private static String taxarText(String text) {
-        StringBuilder stringBuilder = new StringBuilder();
-        for (char c : text.toCharArray()) {
-            stringBuilder.append(c).append('\u0336');
-        }
-        text = stringBuilder.toString();
-        stringBuilder.setLength(0);
-        return text;
     }
 
     private static String converterDecimalToOctal(int numero) {

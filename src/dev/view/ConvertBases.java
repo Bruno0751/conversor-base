@@ -1,7 +1,6 @@
+package dev.view;
 
-package view;
-
-import controller.BaseController;
+import dev.controller.BaseController;
 import javax.swing.JOptionPane;
 
 /**
@@ -10,7 +9,7 @@ import javax.swing.JOptionPane;
  * @since 10/02/2025
  * @version 1
  */
-public class Main {
+public class ConvertBases {
     
     public static void main(String args[]) {
         
