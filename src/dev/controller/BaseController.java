@@ -2,6 +2,7 @@ package dev.controller;
 
 import javax.swing.JOptionPane;
 import dev.service.BaseService;
+import java.awt.HeadlessException;
 
 /**
  *
@@ -20,9 +21,9 @@ public class BaseController {
                         + "1 - DECIMAL -> BINARIO\n"
                         + "2 - DECIMAL -> OCTAL\n"
                         + "3 - DECIMAL -> HEXADECIMAL\n"
-                        + dev.util.Util.taxarText("4 - BINARIO - > DECIMAL")
+                        + dev.util.Util.taxarText("4 - BINARIO - > DECIMAL") + "\n"
                         + "---------------------------------------", "", JOptionPane.QUESTION_MESSAGE));
-            } catch (NumberFormatException e) {
+            } catch (HeadlessException | NumberFormatException e) {
                 if (e.getMessage().contains("For input string")) {
                     throw new NumberFormatException("DIGITE UMA OPÇÃO DO MENU\n"
                             + "SISTEMA ENCERRADO");
@@ -56,7 +57,7 @@ public class BaseController {
                                     case 1:
                                         String result = BaseController.converterDecimalToBinario(numero);
                                         JOptionPane.showMessageDialog(
-                                                null, "Binário = " + result + " Decimal = " + String.valueOf(numero), "", JOptionPane.INFORMATION_MESSAGE
+                                                null, "Binary = " + result + " Decimal = " + String.valueOf(numero), "", JOptionPane.INFORMATION_MESSAGE
                                         );
                                         break;
                                     case 2:
@@ -83,7 +84,7 @@ public class BaseController {
                                 resultado = numero;
                                 response = BaseController.verifyResponse(resultado);
                                 JOptionPane.showMessageDialog(
-                                        null, "Binário = " + numero + " Decimal = " + response, " | ", JOptionPane.INFORMATION_MESSAGE
+                                        null, "Binary = " + numero + " Decimal = " + response, " | ", JOptionPane.INFORMATION_MESSAGE
                                 );
                             }
 
@@ -91,7 +92,7 @@ public class BaseController {
                         break;
                     } else {
                         JOptionPane.showMessageDialog(
-                                null, "OPÇÃO INVÁLIDA", "", JOptionPane.INFORMATION_MESSAGE
+                                null, "INVALID OPTION", "", JOptionPane.INFORMATION_MESSAGE
                         );
                     }
             }
